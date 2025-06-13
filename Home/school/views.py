@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Student, Subject, Attendance, Marks
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import logout
 
 def home_redirect_view(request):
     return redirect('register')
@@ -77,7 +77,7 @@ def dashboard_view(request):
         marks = marks_records.filter(subject=subject).first()
 
         attendance_percentage = attendance.percentage() if attendance else 0
-        marks_percentage = marks.percentage() if marks else 0
+        marks_percentage = marks.percentage if marks else 0
 
         subject_data.append({
             'name': subject.name,
@@ -98,3 +98,10 @@ def dashboard_view(request):
         'overall_marks': overall_marks,
         'student_class': student.student_class
     })
+
+
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

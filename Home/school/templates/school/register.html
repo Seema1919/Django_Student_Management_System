@@ -83,8 +83,9 @@
 <body>
     <div class="registration-box">
         <h2>Student Registration</h2>
-        <form method="post">
+        <form method="post" action="{% url 'register' %}">
             {% csrf_token %}
+
             <label>Username:</label>
             <input type="text" name="username" required>
 

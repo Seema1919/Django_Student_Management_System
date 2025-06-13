@@ -81,6 +81,9 @@
     </style>
 </head>
 <body>
+
+    {% include 'school/navbar.html' %}
+
     <div class="container">
         <h1>Welcome, {{ student.user.username }}</h1>
         <h3>Class: {{ student_class }}</h3>

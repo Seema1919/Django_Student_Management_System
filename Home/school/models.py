@@ -49,11 +49,14 @@ class Attendance(models.Model):
 class Marks(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    score = models.FloatField()
-    total_marks = models.FloatField(default=100)
+    marks_obtained = models.FloatField()
+    total_marks = models.FloatField()
+
+    @property
+    def percentage(self):
+        if self.total_marks == 0:
+            return 0
+        return (self.marks_obtained / self.total_marks) * 100
 
 
-def percentage(self):
-    if self.total == 0:
-        return 0
-    return round((self.score / self.total) * 100, 2)
+

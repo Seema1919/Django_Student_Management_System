@@ -64,9 +64,12 @@
         }
 
         .messages {
-            color: red;
-            font-size: 14px;
-            margin-bottom: 10px;
+            background-color: #ffe5e0;
+            color: #8b0000;
+            border: 1px solid #ffa3a3;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
         }
 
         p {
@@ -99,13 +102,14 @@
             </div>
         {% endif %}
 
-        <form method="post">
+        <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            <label>Username:</label>
-            <input type="text" name="username" required>
 
-            <label>Password:</label>
-            <input type="password" name="password" required>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
 
             <button type="submit">Login</button>
         </form>
