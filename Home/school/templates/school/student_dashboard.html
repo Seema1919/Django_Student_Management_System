@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ request.user.username }}</h2>
+
+    {% if student %}
+        <p><strong>Roll No:</strong> {{ student.roll_number }}</p>
+        <p><strong>Class:</strong> {{ student.student_class }}</p>
+
+        <h3>Subjects:</h3>
+        <ul>
+            {% for subject in subjects %}
+                <li>{{ subject.name }} - {{ subject.percentage }}% - Attendance: {{ subject.attendance }}</li>
+            {% empty %}
+                <li>No subjects added.</li>
+            {% endfor %}
+        </ul>
+
+        <h4>Total Average Percentage: {{ total_percentage }}%</h4>
+    {% else %}
+        <p>No student record found for your account.</p>
+    {% endif %}
+
+    <br><a href="{% url 'login' %}">Logout</a>
+</body>
+</html>

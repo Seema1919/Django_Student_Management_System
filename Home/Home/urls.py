@@ -16,13 +16,15 @@ Including another URLconf
 """
 # Home/urls.py
 
+# home/urls.py
+
 from django.contrib import admin
 from django.urls import path, include
-from school.views import home_redirect_view
-
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', lambda request: redirect('register')),
     path('', include('school.urls')),
-    path('', home_redirect_view, name='home'),
 ]
+

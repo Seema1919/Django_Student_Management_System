@@ -1,103 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Student Registration</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #fdf6ec;
-            color: #4a2e2b;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .registration-box {
-            background-color: #fff8f0;
-            border: 2px solid #c89f81;
-            border-radius: 12px;
-            padding: 30px 40px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            width: 360px;
-        }
-
-        h2 {
-            text-align: center;
-            color: #8b3e2f;
-            margin-bottom: 24px;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #d9b99b;
-            border-radius: 6px;
-            background-color: #fffdf9;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 20px;
-            background-color: #8b3e2f;
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #a14d3d;
-        }
-
-        p {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        a {
-            color: #8b3e2f;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="registration-box">
-        <h2>Student Registration</h2>
-        <form method="post" action="{% url 'register' %}">
+    <div class="container">
+        <h2>Register</h2>
+        <form method="POST">
             {% csrf_token %}
-
-            <label>Username:</label>
-            <input type="text" name="username" required>
-
-            <label>Email:</label>
-            <input type="email" name="email" required>
-
-            <label>Password:</label>
-            <input type="password" name="password" required>
-
-            <label>Class:</label>
-            <input type="text" name="student_class" required>
-
+            {{ form.as_p }}
             <button type="submit">Register</button>
         </form>
         <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
